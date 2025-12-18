@@ -29,5 +29,15 @@ public class MovieService {
     }
 
 
+    public Movie updateMovie(Long id, Movie movie) {
+        Movie existing = getMovieById(id);
+        existing.setTitle(movie.getTitle());
+        existing.setLanguage(movie.getLanguage());
+        existing.setDuration(movie.getDuration());
+        existing.setGenre(movie.getGenre());
+        return movieRepository.save(existing);
+    }
+
+
 }
 

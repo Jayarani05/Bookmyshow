@@ -33,6 +33,12 @@ public class MovieController {
     }
 
 
+    @PutMapping("/{id}")
+    public Movie updateMovie(@PathVariable Long id,
+                             @RequestBody Movie movie) {
+        return movieService.updateMovie(id, movie);
+    }
+
 
 }
 
