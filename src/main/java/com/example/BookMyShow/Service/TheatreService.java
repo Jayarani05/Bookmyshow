@@ -40,5 +40,7 @@ public class TheatreService {
     public void deleteTheatre(Long id) {
         theatreRepository.deleteById(id);
     }
+
+
 }
 

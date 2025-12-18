@@ -33,6 +33,18 @@ public class TheatreController {
         return theatreService.getTheatreById(id);
     }
 
+    @PutMapping("/{id}")
+    public Theatre updateTheatre(@PathVariable Long id,
+                                 @RequestBody Theatre theatre) {
+        return theatreService.updateTheatre(id, theatre);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteTheatre(@PathVariable Long id) {
+        theatreService.deleteTheatre(id);
+        return "Theatre deleted successfully";
+    }
+
 
 }
 
