@@ -41,5 +41,15 @@ public class ScreenService {
                 .orElseThrow(() -> new RuntimeException("Screen not found"));
     }
 
+    public Screen updateScreen(Long id, String name) {
+        Screen screen = getScreenById(id);
+        screen.setName(name);
+        return screenRepository.save(screen);
+    }
+
+    public void deleteScreen(Long id) {
+        screenRepository.deleteById(id);
+    }
+
 
 }

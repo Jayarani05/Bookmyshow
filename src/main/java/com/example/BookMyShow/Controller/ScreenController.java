@@ -35,5 +35,20 @@ public class ScreenController {
         return screenService.getScreenById(id);
     }
 
+    @PutMapping("/{id}")
+    public Screen updateScreen(@PathVariable Long id,
+                               @RequestBody Map<String, Object> request) {
+        String name = (String) request.get("name");
+        return screenService.updateScreen(id, name);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteScreen(@PathVariable Long id) {
+        screenService.deleteScreen(id);
+        return "Screen deleted successfully";
+    }
+
+
+
 
 }
