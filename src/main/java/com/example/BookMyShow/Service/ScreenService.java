@@ -36,5 +36,10 @@ public class ScreenService {
         return screenRepository.findAll();
     }
 
+    public Screen getScreenById(Long id) {
+        return screenRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Screen not found"));
+    }
+
 
 }

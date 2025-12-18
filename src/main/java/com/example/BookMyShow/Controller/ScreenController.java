@@ -30,5 +30,10 @@ public class ScreenController {
         return screenService.getAllScreens();
     }
 
+    @GetMapping("/{id}")
+    public Screen getScreenById(@PathVariable Long id) {
+        return screenService.getScreenById(id);
+    }
+
 
 }
