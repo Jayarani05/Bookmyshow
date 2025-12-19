@@ -1,10 +1,12 @@
 package com.example.BookMyShow.Entity;
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import lombok.*;
 import java.util.List;
 
 
-@Entity
+@Document(collection = "bookings")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,16 +14,15 @@ import java.util.List;
 public class Booking {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    @ManyToOne
+    @DBRef
     private User user;
 
-    @ManyToOne
+    @DBRef
     private Show show;
 
-    @ManyToMany
+    @DBRef
     private List<Seat> seats;
 
     private double totalAmount;

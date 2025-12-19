@@ -1,6 +1,8 @@
 package com.example.BookMyShow.Entity;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +10,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Entity
+@Document(collection = "shows")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,13 +18,12 @@ import java.time.LocalDateTime;
 public class Show {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    @ManyToOne
+    @DBRef
     private Movie movie;
 
-    @ManyToOne
+    @DBRef
     private Screen screen;
 
     private LocalDateTime startTime;

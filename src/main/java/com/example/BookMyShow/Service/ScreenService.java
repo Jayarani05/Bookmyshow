@@ -21,7 +21,7 @@ public class ScreenService {
         this.theatreRepository = theatreRepository;
     }
 
-    public Screen createScreen(String name, Long theatreId) {
+    public Screen createScreen(String name, String theatreId) {
         Theatre theatre = theatreRepository.findById(theatreId)
                 .orElseThrow(() -> new RuntimeException("Theatre not found"));
 
@@ -36,18 +36,18 @@ public class ScreenService {
         return screenRepository.findAll();
     }
 
-    public Screen getScreenById(Long id) {
+    public Screen getScreenById(String id) {
         return screenRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Screen not found"));
     }
 
-    public Screen updateScreen(Long id, String name) {
+    public Screen updateScreen(String id, String name) {
         Screen screen = getScreenById(id);
         screen.setName(name);
         return screenRepository.save(screen);
     }
 
-    public void deleteScreen(Long id) {
+    public void deleteScreen(String id) {
         screenRepository.deleteById(id);
     }
 

@@ -25,19 +25,19 @@ public class TheatreService {
         return theatreRepository.findAll();
     }
 
-    public Theatre getTheatreById(Long id) {
+    public Theatre getTheatreById(String id) {
         return theatreRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Theatre not found"));
     }
 
-    public Theatre updateTheatre(Long id, Theatre theatre) {
+    public Theatre updateTheatre(String id, Theatre theatre) {
         Theatre existing = getTheatreById(id);
         existing.setName(theatre.getName());
         existing.setLocation(theatre.getLocation());
         return theatreRepository.save(existing);
     }
 
-    public void deleteTheatre(Long id) {
+    public void deleteTheatre(String id) {
         theatreRepository.deleteById(id);
     }
 

@@ -1,9 +1,9 @@
 package com.example.BookMyShow.Repository;
 import com.example.BookMyShow.Entity.Screen;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-    public interface ScreenRepository extends JpaRepository<Screen, Long> {
+    public interface ScreenRepository extends MongoRepository<Screen, String> {
     }
 
 

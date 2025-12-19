@@ -1,10 +1,10 @@
 package com.example.BookMyShow.Entity;
 
-
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.*;
 
-@Entity
+@Document(collection = "theatres")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,8 +12,7 @@ import lombok.*;
 public class Theatre {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private String name;
     private String location;

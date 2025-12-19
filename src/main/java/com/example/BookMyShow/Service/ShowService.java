@@ -27,7 +27,7 @@ import java.util.List;
             this.screenRepository = screenRepository;
         }
 
-        public Show createShow(Long movieId, Long screenId, LocalDateTime time, double price) {
+        public Show createShow(String movieId, String screenId, LocalDateTime time, double price) {
             Movie movie = movieRepository.findById(movieId).orElseThrow();
             Screen screen = screenRepository.findById(screenId).orElseThrow();
 

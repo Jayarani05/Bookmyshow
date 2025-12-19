@@ -1,9 +1,11 @@
 package com.example.BookMyShow.Entity;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import lombok.*;
 
-@Entity
+@Document(collection = "seats")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -11,16 +13,13 @@ import lombok.*;
 public class Seat {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private String seatNumber;
 
-    @Enumerated(EnumType.STRING)
     private SeatType seatType;
 
-    @ManyToOne
-    @JoinColumn(name = "screen_id")
+    @DBRef
     private Screen screen;
 }
 

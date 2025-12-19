@@ -21,7 +21,7 @@ public class ScreenController {
     @PostMapping
     public Screen createScreen(@RequestBody Map<String, Object> request) {
         String name = (String) request.get("name");
-        Long theatreId = Long.valueOf(request.get("theatreId").toString());
+        String theatreId = request.get("theatreId").toString();
         return screenService.createScreen(name, theatreId);
     }
 
@@ -31,19 +31,19 @@ public class ScreenController {
     }
 
     @GetMapping("/{id}")
-    public Screen getScreenById(@PathVariable Long id) {
+    public Screen getScreenById(@PathVariable String id) {
         return screenService.getScreenById(id);
     }
 
     @PutMapping("/{id}")
-    public Screen updateScreen(@PathVariable Long id,
+    public Screen updateScreen(@PathVariable String id,
                                @RequestBody Map<String, Object> request) {
         String name = (String) request.get("name");
         return screenService.updateScreen(id, name);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteScreen(@PathVariable Long id) {
+    public String deleteScreen(@PathVariable String id) {
         screenService.deleteScreen(id);
         return "Screen deleted successfully";
     }

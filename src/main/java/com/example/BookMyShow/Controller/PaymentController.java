@@ -18,7 +18,7 @@ public class PaymentController {
     }
 
     @PostMapping("/{bookingId}")
-    public Payment pay(@PathVariable Long bookingId) {
+    public Payment pay(@PathVariable String bookingId) {
         return paymentService.makePayment(bookingId);
     }
-}
+} 

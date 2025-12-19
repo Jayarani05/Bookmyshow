@@ -21,8 +21,8 @@ public class ShowController {
     @PostMapping
     public Show createShow(@RequestBody Map<String, String> req) {
         return showService.createShow(
-                Long.valueOf(req.get("movieId")),
-                Long.valueOf(req.get("screenId")),
+                req.get("movieId"),
+                req.get("screenId"),
                 LocalDateTime.parse(req.get("startTime")),
                 Double.parseDouble(req.get("price"))
         );

@@ -1,8 +1,8 @@
 package com.example.BookMyShow.Repository;
 
 import com.example.BookMyShow.Entity.Seat;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface SeatRepository extends JpaRepository<Seat, Long> {
+public interface SeatRepository extends MongoRepository<Seat, String> {
 }
 

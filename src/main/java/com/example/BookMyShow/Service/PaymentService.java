@@ -18,10 +18,11 @@ public class PaymentService {
         this.bookingRepository = bookingRepository;
     }
 
-    public Payment makePayment(Long bookingId) {
+    public Payment makePayment(String bookingId) {
         Booking booking = bookingRepository.findById(bookingId).orElseThrow();
         Payment payment = new Payment(null, booking, booking.getTotalAmount(), "SUCCESS");
         booking.setStatus("CONFIRMED");
+        bookingRepository.save(booking);
         return paymentRepository.save(payment);
     }
 }

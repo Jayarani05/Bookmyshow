@@ -24,7 +24,7 @@ public class SeatController {
         return seatService.createSeat(
                 req.get("seatNumber"),
                 SeatType.valueOf(req.get("seatType")),
-                Long.valueOf(req.get("screenId"))
+                req.get("screenId")
         );
     }
 
@@ -34,7 +34,7 @@ public class SeatController {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteSeat(@PathVariable Long id) {
+    public String deleteSeat(@PathVariable String id) {
         seatService.deleteSeat(id);
         return "Seat deleted";
     }

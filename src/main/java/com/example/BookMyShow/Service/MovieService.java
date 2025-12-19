@@ -23,13 +23,13 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
-    public Movie getMovieById(Long id) {
+    public Movie getMovieById(String id) {
         return movieRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Movie not found"));
     }
 
 
-    public Movie updateMovie(Long id, Movie movie) {
+    public Movie updateMovie(String id, Movie movie) {
         Movie existing = getMovieById(id);
         existing.setTitle(movie.getTitle());
         existing.setLanguage(movie.getLanguage());
@@ -38,7 +38,7 @@ public class MovieService {
         return movieRepository.save(existing);
     }
 
-    public void deleteMovie(Long id) {
+    public void deleteMovie(String id) {
         movieRepository.deleteById(id);
     }
 

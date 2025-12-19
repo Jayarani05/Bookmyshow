@@ -20,7 +20,7 @@ public class SeatService {
         this.screenRepository = screenRepository;
     }
 
-    public Seat createSeat(String seatNumber, SeatType seatType, Long screenId) {
+    public Seat createSeat(String seatNumber, SeatType seatType, String screenId) {
         Screen screen = screenRepository.findById(screenId)
                 .orElseThrow(() -> new RuntimeException("Screen not found"));
 
@@ -32,7 +32,7 @@ public class SeatService {
         return seatRepository.findAll();
     }
 
-    public void deleteSeat(Long id) {
+    public void deleteSeat(String id) {
         seatRepository.deleteById(id);
     }
 }

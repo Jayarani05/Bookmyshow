@@ -30,7 +30,7 @@ public class BookingService {
         this.seatRepository = seatRepository;
     }
 
-    public Booking createBooking(Long userId, Long showId, List<Long> seatIds) {
+    public Booking createBooking(String userId, String showId, List<String> seatIds) {
         User user = userRepository.findById(userId).orElseThrow();
         Show show = showRepository.findById(showId).orElseThrow();
         List<Seat> seats = seatRepository.findAllById(seatIds);
