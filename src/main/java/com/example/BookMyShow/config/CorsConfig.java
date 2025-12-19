@@ -23,6 +23,12 @@ public class CorsConfig implements WebMvcConfigurer {
 
     @Bean
     public CacheManager cacheManager() {
-        return new ConcurrentMapCacheManager("users","theatres","movies","shows","screens","seats");
+        return new ConcurrentMapCacheManager(
+                "users",
+                "theatres",
+                "movies",
+                "shows",
+                "screens",
+                "seats");
     }
 }

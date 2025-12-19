@@ -35,7 +35,7 @@ public class ScreenService {
         return screenRepository.save(screen);
     }
 
-    @Cacheable("screen")
+    @Cacheable("screens")
     public List<Screen> getAllScreens() {
         return screenRepository.findAll();
     }
