@@ -29,20 +29,22 @@ export default function Shows(){
       <h2>Shows</h2>
 
       <form onSubmit={submit}>
-        <label>Movie
-          <select value={movieId} onChange={e=>setMovieId(e.target.value)} required>
-            <option value="">--select--</option>
-            {movies.map(m=> <option key={m.id} value={m.id}>{m.title}</option>)}
-          </select>
-        </label>
-        <label>Screen
-          <select value={screenId} onChange={e=>setScreenId(e.target.value)} required>
-            <option value="">--select--</option>
-            {screens.map(s=> <option key={s.id} value={s.id}>{s.name}</option>)}
-          </select>
-        </label>
-        <label>Start time<input type="datetime-local" value={startTime} onChange={e=>setStartTime(e.target.value)} required/></label>
-        <label>Price<input type="number" value={price} onChange={e=>setPrice(e.target.value)} required/></label>
+        <div className="form-grid">
+          <label>Movie
+            <select value={movieId} onChange={e=>setMovieId(e.target.value)} required>
+              <option value="">--select--</option>
+              {movies.map(m=> <option key={m.id} value={m.id}>{m.title}</option>)}
+            </select>
+          </label>
+          <label>Screen
+            <select value={screenId} onChange={e=>setScreenId(e.target.value)} required>
+              <option value="">--select--</option>
+              {screens.map(s=> <option key={s.id} value={s.id}>{s.name}</option>)}
+            </select>
+          </label>
+          <label>Start time<input type="datetime-local" value={startTime} onChange={e=>setStartTime(e.target.value)} required/></label>
+          <label>Price<input type="number" value={price} onChange={e=>setPrice(e.target.value)} required/></label>
+        </div>
         <button type="submit">Create Show</button>
       </form>
 

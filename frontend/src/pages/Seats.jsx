@@ -23,19 +23,21 @@ export default function Seats(){
     <section>
       <h2>Seats</h2>
       <form onSubmit={submit}>
-        <label>Seat number<input value={seatNumber} onChange={e=>setSeatNumber(e.target.value)} required/></label>
-        <label>Seat type
-          <select value={seatType} onChange={e=>setSeatType(e.target.value)}>
-            <option>REGULAR</option>
-            <option>PREMIUM</option>
-          </select>
-        </label>
-        <label>Screen
-          <select value={screenId} onChange={e=>setScreenId(e.target.value)} required>
-            <option value="">--select--</option>
-            {screens.map(s=> <option key={s.id} value={s.id}>{s.name}</option>)}
-          </select>
-        </label>
+        <div className="form-grid">
+          <label>Seat number<input value={seatNumber} onChange={e=>setSeatNumber(e.target.value)} required/></label>
+          <label>Seat type
+            <select value={seatType} onChange={e=>setSeatType(e.target.value)}>
+              <option>REGULAR</option>
+              <option>PREMIUM</option>
+            </select>
+          </label>
+          <label>Screen
+            <select value={screenId} onChange={e=>setScreenId(e.target.value)} required>
+              <option value="">--select--</option>
+              {screens.map(s=> <option key={s.id} value={s.id}>{s.name}</option>)}
+            </select>
+          </label>
+        </div>
         <button type="submit">Create Seat</button>
       </form>
 

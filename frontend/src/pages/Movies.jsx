@@ -24,10 +24,12 @@ export default function Movies(){
     <section>
       <h2>Movies</h2>
       <form onSubmit={submit}>
-        <label>Title<input value={title} onChange={e=>setTitle(e.target.value)} required/></label>
-        <label>Language<input value={language} onChange={e=>setLanguage(e.target.value)} required/></label>
-        <label>Duration<input type="number" value={duration} onChange={e=>setDuration(e.target.value)} required/></label>
-        <label>Genre<input value={genre} onChange={e=>setGenre(e.target.value)} required/></label>
+        <div className="form-grid">
+          <label>Title<input value={title} onChange={e=>setTitle(e.target.value)} required/></label>
+          <label>Language<input value={language} onChange={e=>setLanguage(e.target.value)} required/></label>
+          <label>Duration<input type="number" value={duration} onChange={e=>setDuration(e.target.value)} required/></label>
+          <label>Genre<input value={genre} onChange={e=>setGenre(e.target.value)} required/></label>
+        </div>
         <button type="submit">Create Movie</button>
       </form>
 
