@@ -44,34 +44,36 @@ export default function Booking(){
     <section>
       <h2>Create Booking</h2>
       <form onSubmit={submit}>
-        <div className="form-grid">
-          <label>User
-            <select value={userId} onChange={e=>setUserId(e.target.value)} required>
-              <option value="">--select user--</option>
-              {users.map(u=> <option key={u.id} value={u.id}>{u.name}</option>)}
-            </select>
-          </label>
+        <label>User
+          <select value={userId} onChange={e=>setUserId(e.target.value)} required>
+            <option value="">--select user--</option>
+            {users.map(u=> <option key={u.id} value={u.id}>{u.name}</option>)}
+          </select>
+        </label>
 
-          <label>Show
-            <select value={showId} onChange={e=>setShowId(e.target.value)} required>
-              <option value="">--select show--</option>
-              {shows.map(s=> <option key={s.id} value={s.id}>{s.movie?.title} @ {s.screen?.name} — {new Date(s.startTime).toLocaleString()}</option>)}
-            </select>
-          </label>
-        </div>
+        <label>Show
+          <select value={showId} onChange={e=>setShowId(e.target.value)} required>
+            <option value="">--select show--</option>
+            {shows.map(s=> <option key={s.id} value={s.id}>{s.movie?.title} @ {s.screen?.name} — {new Date(s.startTime).toLocaleString()}</option>)}
+          </select>
+        </label>
 
         <fieldset>
           <legend>Seats (filtered by show screen)</legend>
           <div className="seat-list">
             {availableSeats.map(seat => (
-              <label key={seat.id}>
-                <input type="checkbox" checked={selectedSeats.has(seat.id)} onChange={()=>onToggleSeat(seat.id)} /> <span>{seat.seatNumber} — {seat.seatType}</span>
+              <label key={seat.id} className={`seat ${seat.seatType?.toLowerCase() || 'regular'}`}>
+                <input type="checkbox" checked={selectedSeats.has(seat.id)} onChange={()=>onToggleSeat(seat.id)} />
+                <span className="seat-number">{seat.seatNumber}</span>
+                <span className="seat-type">{seat.seatType}</span>
               </label>
             ))}
           </div>
         </fieldset>
 
-        <button type="submit">Book</button>
+        <div className="form-footer">
+          <button type="submit">Book</button>
+        </div>
       </form>
 
       {result && (

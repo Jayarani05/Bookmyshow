@@ -38,11 +38,21 @@ export default function Seats(){
             </select>
           </label>
         </div>
-        <button type="submit">Create Seat</button>
+        <div className="form-footer">
+          <button type="submit">Create Seat</button>
+        </div>
       </form>
 
-      <ul>
-        {seats.map(s=> <li key={s.id}>{s.seatNumber} — {s.seatType} — screen: {s.screen?.name || s.screen}</li>)}
+      <ul className="card-list">
+        {seats.map(s=> (
+          <li key={s.id} className={`card seat ${s.seatType?.toLowerCase() || 'regular'}`}>
+            <div>
+              <div className="title">{s.seatNumber}</div>
+              <div className="meta">screen: {s.screen?.name || s.screen}</div>
+            </div>
+            <div className="seat-type small">{s.seatType}</div>
+          </li>
+        ))}
       </ul>
     </section>
   )

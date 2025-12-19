@@ -22,14 +22,23 @@ export default function Users(){
     <section>
       <h2>Users</h2>
       <form onSubmit={submit}>
-        <label>Name<input value={name} onChange={e=>setName(e.target.value)} required/></label>
-        <label>Email<input value={email} onChange={e=>setEmail(e.target.value)} required/></label>
-        <label>Phone<input value={phone} onChange={e=>setPhone(e.target.value)} required/></label>
-        <button type="submit">Create User</button>
+        <div className="form-grid">
+          <label>Name<input value={name} onChange={e=>setName(e.target.value)} required/></label>
+          <label>Email<input value={email} onChange={e=>setEmail(e.target.value)} required/></label>
+          <label>Phone<input value={phone} onChange={e=>setPhone(e.target.value)} required/></label>
+        </div>
+        <div className="form-footer">
+          <button type="submit">Create User</button>
+        </div>
       </form>
 
-      <ul>
-        {users.map(u=> <li key={u.id}>{u.name} — {u.email} — {u.phone}</li>)}
+      <ul className="card-list">
+        {users.map(u=> (
+          <li key={u.id} className="card">
+            <div className="title">{u.name}</div>
+            <div className="meta">{u.email} — {u.phone}</div>
+          </li>
+        ))}
       </ul>
     </section>
   )

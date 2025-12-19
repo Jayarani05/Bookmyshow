@@ -30,12 +30,17 @@ export default function Movies(){
           <label>Duration<input type="number" value={duration} onChange={e=>setDuration(e.target.value)} required/></label>
           <label>Genre<input value={genre} onChange={e=>setGenre(e.target.value)} required/></label>
         </div>
-        <button type="submit">Create Movie</button>
+        <div className="form-footer">
+          <button type="submit">Create Movie</button>
+        </div>
       </form>
 
-      <ul>
+      <ul className="card-list">
         {movies.map(m=> (
-          <li key={m.id}>{m.title} — {m.language} — {m.duration} min — {m.genre}</li>
+          <li key={m.id} className="card">
+            <div className="title">{m.title}</div>
+            <div className="meta">{m.language} — {m.duration} min — {m.genre}</div>
+          </li>
         ))}
       </ul>
     </section>

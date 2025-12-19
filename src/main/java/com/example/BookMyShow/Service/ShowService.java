@@ -1,18 +1,17 @@
 package com.example.BookMyShow.Service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+
 import com.example.BookMyShow.Entity.Movie;
 import com.example.BookMyShow.Entity.Screen;
 import com.example.BookMyShow.Entity.Show;
 import com.example.BookMyShow.Repository.MovieRepository;
 import com.example.BookMyShow.Repository.ScreenRepository;
 import com.example.BookMyShow.Repository.ShowRepository;
-
-import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.util.List;
-
-import org.springframework.cache.annotation.Cacheable;
 
 
     @Service

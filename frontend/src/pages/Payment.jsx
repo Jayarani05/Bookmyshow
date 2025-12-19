@@ -20,8 +20,12 @@ export default function Payment(){
     <section>
       <h2>Make Payment</h2>
       <form onSubmit={submit}>
-        <label>Booking ID<input value={bookingId} onChange={e=>setBookingId(e.target.value)} required/></label>
-        <button type="submit">Pay</button>
+        <div className="form-grid">
+          <label>Booking ID<input value={bookingId} onChange={e=>setBookingId(e.target.value)} required/></label>
+        </div>
+        <div className="form-footer">
+          <button type="submit">Pay</button>
+        </div>
       </form>
       {result && <pre>{JSON.stringify(result, null, 2)}</pre>}
     </section>

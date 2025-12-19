@@ -45,12 +45,20 @@ export default function Shows(){
           <label>Start time<input type="datetime-local" value={startTime} onChange={e=>setStartTime(e.target.value)} required/></label>
           <label>Price<input type="number" value={price} onChange={e=>setPrice(e.target.value)} required/></label>
         </div>
-        <button type="submit">Create Show</button>
+        <div className="form-footer">
+          <button type="submit">Create Show</button>
+        </div>
       </form>
 
-      <ul>
+      <ul className="card-list">
         {shows.map(s=> (
-          <li key={s.id}>Movie: {s.movie?.title || '—'} / Screen: {s.screen?.name || '—'} / {new Date(s.startTime).toLocaleString()} / ${s.price}</li>
+          <li key={s.id} className="card">
+            <div>
+              <div className="title">{s.movie?.title || '—'}</div>
+              <div className="meta">Screen: {s.screen?.name || '—'} / {new Date(s.startTime).toLocaleString()}</div>
+            </div>
+            <div className="meta">${s.price}</div>
+          </li>
         ))}
       </ul>
     </section>
