@@ -7,6 +7,7 @@ import lombok.*;
 @Document(collection = "users")
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {

@@ -2,9 +2,12 @@ package com.example.BookMyShow.Service;
 
 import com.example.BookMyShow.Entity.Movie;
 import com.example.BookMyShow.Repository.MovieRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import org.springframework.cache.annotation.Cacheable;
 
 @Service
 public class MovieService {
@@ -19,6 +22,7 @@ public class MovieService {
         return movieRepository.save(movie);
     }
 
+    @Cacheable("movies")
     public List<Movie> getAllMovies() {
         return movieRepository.findAll();
     }

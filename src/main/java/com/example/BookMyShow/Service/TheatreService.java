@@ -4,9 +4,12 @@ package com.example.BookMyShow.Service;
 
 import com.example.BookMyShow.Entity.Theatre;
 import com.example.BookMyShow.Repository.TheatreRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import org.springframework.cache.annotation.Cacheable;
 
 @Service
 public class TheatreService {
@@ -20,7 +23,7 @@ public class TheatreService {
     public Theatre createTheatre(Theatre theatre) {
         return theatreRepository.save(theatre);
     }
-
+    @Cacheable("theatres")
     public List<Theatre> getAllTheatres() {
         return theatreRepository.findAll();
     }

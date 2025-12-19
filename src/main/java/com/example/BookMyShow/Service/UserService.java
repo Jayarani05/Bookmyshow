@@ -3,9 +3,12 @@ package com.example.BookMyShow.Service;
 
 import com.example.BookMyShow.Entity.User;
 import com.example.BookMyShow.Repository.UserRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import org.springframework.cache.annotation.Cacheable;
 
 @Service
 public class UserService {
@@ -20,6 +23,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    @Cacheable("users")
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }

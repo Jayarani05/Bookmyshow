@@ -6,10 +6,13 @@ import com.example.BookMyShow.Entity.Show;
 import com.example.BookMyShow.Repository.MovieRepository;
 import com.example.BookMyShow.Repository.ScreenRepository;
 import com.example.BookMyShow.Repository.ShowRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.springframework.cache.annotation.Cacheable;
 
 
     @Service
@@ -34,7 +37,7 @@ import java.util.List;
             Show show = new Show(null, movie, screen, time, price);
             return showRepository.save(show);
         }
-
+        @Cacheable("shows")
         public List<Show> getAllShows() {
             return showRepository.findAll();
         }

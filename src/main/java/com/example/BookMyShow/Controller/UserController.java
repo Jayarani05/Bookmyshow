@@ -4,6 +4,8 @@ package com.example.BookMyShow.Controller;
 
 import com.example.BookMyShow.Entity.User;
 import com.example.BookMyShow.Service.UserService;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,9 +15,11 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final CacheManager cacheManager;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, CacheManager cacheManager) {
         this.userService = userService;
+        this.cacheManager = cacheManager;
     }
 
     @PostMapping
@@ -45,6 +49,23 @@ public class UserController {
         userService.deleteUser(id);
         return "User delete successfully";
 
+    }
+
+    @GetMapping("/cache/print")
+    public void printCachedUsers() {
+
+        Cache cache = cacheManager.getCache("users");
+
+        if (cache == null) {
+            System.out.println("Cache 'users' not found");
+            return;
+        }
+
+        Object cachedData = cache.getNativeCache();
+
+        System.out.println("===== CACHED USERS =====");
+        System.out.println(cachedData);
+        System.out.println("========================");
     }
 
 }

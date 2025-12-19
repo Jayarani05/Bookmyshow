@@ -3,6 +3,8 @@ package com.example.BookMyShow.Controller;
 
 import com.example.BookMyShow.Entity.Movie;
 import com.example.BookMyShow.Service.MovieService;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,9 +14,10 @@ import java.util.List;
 public class MovieController {
 
     private final MovieService movieService;
-
-    public MovieController(MovieService movieService) {
+    private final CacheManager cacheManager;
+    public MovieController(MovieService movieService,CacheManager cacheManager) {
         this.movieService = movieService;
+        this.cacheManager = cacheManager;
     }
 
     @PostMapping
@@ -43,6 +46,21 @@ public class MovieController {
     public String deleteMovie(@PathVariable String id) {
         movieService.deleteMovie(id);
         return "Movie deleted successfully";
+    }
+
+    @GetMapping("/cache/print")
+    public void printCachedMovies() {
+
+        Cache cache = cacheManager.getCache("theatres");
+
+        if (cache == null) {
+            System.out.println("Cache 'theatres' not found");
+            return;
+        }
+
+        System.out.println("CACHED THEATRES ");
+        System.out.println(cache.getNativeCache());
+
     }
 
 

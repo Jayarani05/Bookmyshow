@@ -5,9 +5,12 @@ import com.example.BookMyShow.Entity.Seat;
 import com.example.BookMyShow.Entity.SeatType;
 import com.example.BookMyShow.Repository.ScreenRepository;
 import com.example.BookMyShow.Repository.SeatRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import org.springframework.cache.annotation.Cacheable;
 
 @Service
 public class SeatService {
@@ -28,6 +31,7 @@ public class SeatService {
         return seatRepository.save(seat);
     }
 
+    @Cacheable("seats")
     public List<Seat> getAllSeats() {
         return seatRepository.findAll();
     }

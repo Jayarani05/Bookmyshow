@@ -1,9 +1,11 @@
 package com.example.BookMyShow.Controller;
 
 
+import org.springframework.cache.CacheManager;
 
 import com.example.BookMyShow.Entity.Theatre;
 import com.example.BookMyShow.Service.TheatreService;
+import org.springframework.cache.Cache;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,9 +15,11 @@ import java.util.List;
 public class TheatreController {
 
     private final TheatreService theatreService;
+    private final CacheManager cacheManager;
 
-    public TheatreController(TheatreService theatreService) {
+    public TheatreController(TheatreService theatreService,CacheManager cacheManager) {
         this.theatreService = theatreService;
+        this.cacheManager = cacheManager;
     }
 
     @PostMapping
@@ -43,6 +47,21 @@ public class TheatreController {
     public String deleteTheatre(@PathVariable String id) {
         theatreService.deleteTheatre(id);
         return "Theatre deleted successfully";
+    }
+
+    @GetMapping("/cache/print")
+    public void printCachedtheatres() {
+
+        Cache cache = cacheManager.getCache("theatres");
+
+        if (cache == null) {
+            System.out.println("Cache 'theatres' not found");
+            return;
+        }
+
+        System.out.println("CACHED THEATRES ");
+        System.out.println(cache.getNativeCache());
+
     }
 
 
